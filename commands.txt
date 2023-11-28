@@ -1,0 +1,8 @@
+// 
+// Update requirements.txt
+pip freeze > requirements.txt
+
+//
+// Only for Docker containers and not for compose
+docker build --tag carshare-django .
+docker run --publish 8000:8000 carshare-django 
