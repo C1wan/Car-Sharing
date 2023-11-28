@@ -6,3 +6,11 @@ pip freeze > requirements.txt
 // Only for Docker containers and not for compose
 docker build --tag carshare-django .
 docker run --publish 8000:8000 carshare-django 
+
+//
+// starts the container
+docker-compose up
+
+//
+// Creates superuser 
+docker run --rm app python ./car_sharing/manage.py createsuperuser --username=admin --email=asd@asdcom
