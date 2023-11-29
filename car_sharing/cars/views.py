@@ -1,6 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 # Create your views here.
 
+def home(request):
+    
+    return render(request, "cars/base.html")
+
+
 def index(request):
-    return HttpResponse("Ciwan ")
+    return render(request, 'cars/index.html')
