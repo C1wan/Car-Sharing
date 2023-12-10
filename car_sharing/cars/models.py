@@ -5,44 +5,44 @@ import datetime
 # TODO : Felder für Models überlegen
 
 
-class Brand(models.Models):
-    brand = brand = models.CharField(max_length=50, blank=False,unique=True)
+class Brand(models.Model):
+    brand  = models.CharField(max_length=50, blank=False,unique=True)
     def __str__(self):
-            return str(self.brand)
+         return str(self.brand)
 
-class Model(models.Models):
-    model = brand = models.CharField(max_length=50, blank=False,unique=True)
+class Car_Model(models.Model):
+    car_model =  models.CharField(max_length=50, blank=False,unique=True)
     def __str__(self):
-            return str(self.model)
+            return str(self.car_model)
         
-class Consumption_Type(models.Models):
+class Consumption_Type(models.Model):
     consumption_type = models.CharField(max_length=100)
     def __str__(self):
             return str(self.consumption_type)
         
-class Color(models.Models):
+class Color(models.Model):
     color = models.CharField(max_length=100)
     def __str__(self):
             return str(self.color)
 
-class Year(models.Models):
+class Year(models.Model):
     YEAR_CHOICES = []
     for r in range(1980, (datetime.datetime.now().year+1)):
         YEAR_CHOICES.append((r,r))
     
     
-    year = models.IntegerField(_('year'),choices=YEAR_CHOICES, default=datetime.datetime.now().year,blank=False)
+    year = models.IntegerField(('year'),choices=YEAR_CHOICES, default=datetime.datetime.now().year,blank=False)
     def __str__(self):
             return str(self.year)
 
 class Car(models.Model): 
     brand = models.ForeignKey(Brand,on_delete=models.PROTECT,blank=False)
-    model = models.ForeignKey(Model,on_delete=models.PROTECT,blank=False)
+    car_model = models.ForeignKey(Car_Model,on_delete=models.PROTECT,blank=False)
     year = models.ForeignKey(Year,on_delete=models.PROTECT,blank=False)
     consumption_type = models.ForeignKey(Consumption_Type,on_delete=models.PROTECT,blank=False)
     color = models.ForeignKey(Color,on_delete=models.PROTECT,blank=False)
-    latidude = models.DecimalField(max_digits=8)
-    longitude = models.DecimalField(max_digits=8)
+    latidude = models.DecimalField(max_digits=8,decimal_places=5)
+    longitude = models.DecimalField(max_digits=8,decimal_places=5)
     
 
     
